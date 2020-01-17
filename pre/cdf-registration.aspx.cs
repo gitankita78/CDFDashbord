@@ -50,7 +50,7 @@ public partial class cdf_Registration : System.Web.UI.Page
                     {
                         connection.Open();
                         // check table tblUserMaster email id is not exist 
-                        string str = "select uId from tblUserMaster where email ='" + txt_email.Text + "'";
+                        string str = "select uId from tblUserMaster where UserTypeId=2 and email ='" + txt_email.Text + "'";
                         SqlCommand cmd1 = new SqlCommand(str, connection);
                         SqlDataReader dr = cmd1.ExecuteReader();
 
@@ -86,7 +86,7 @@ public partial class cdf_Registration : System.Web.UI.Page
                                     str = "";
 
                                     // Get uId from tblUserMaster
-                                    str = "select uId from tblUserMaster where email='" + Session["email"].ToString() + "'";
+                                    str = "select uId from tblUserMaster where UserTypeId=2 and email='" + Session["email"].ToString() + "'";
                                     command.CommandText = str;
                                     int uid = Convert.ToInt32(command.ExecuteScalar().ToString());
                                     if (uid > 0)

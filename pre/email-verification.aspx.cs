@@ -38,7 +38,7 @@ public partial class pre_email_verification : System.Web.UI.Page
                 using (SqlConnection con = new SqlConnection(connectionstring))
                 {
                     // check table tblUserMaster email id exist or not 
-                    string str = "select uId,fname,email from tblUserMaster where email ='" + txt_email.Text + "'";
+                    string str = "select uId,fname,email from tblUserMaster  where UserTypeId=2 and email ='" + txt_email.Text + "'";
                     SqlCommand cmd = new SqlCommand(str, con);
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -55,7 +55,7 @@ public partial class pre_email_verification : System.Web.UI.Page
                     else
                     {
                         dr.Close();
-                        string query_verfiedUser = "Select executiveId,email from tblverifyRegistration where status ='ACTIVE' and email = '" + txt_email.Text + "'";
+                        string query_verfiedUser = "Select executiveId,email from tblverifyRegistration where UserType=2 and status ='ACTIVE' and email = '" + txt_email.Text + "'";
                         cmd = new SqlCommand(query_verfiedUser, con);
 
                         SqlDataReader sdr = cmd.ExecuteReader();

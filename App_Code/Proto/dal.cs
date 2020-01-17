@@ -39,7 +39,7 @@ public class dal
         //ConnectionStringSettings cn = new ConnectionStringSettings();
         connew = ConfigurationManager.ConnectionStrings["institueSearch_ConnectionStringNew"].ConnectionString.ToString();
         strcon = ConfigurationManager.ConnectionStrings["career_ConnectionStringNew"].ConnectionString.ToString();
-        strConnection = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
+      //  strConnection = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
         //
         // TODO: Add constructor logic here
         //        

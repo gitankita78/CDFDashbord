@@ -78,13 +78,13 @@ public partial class verifycdfregistration : System.Web.UI.Page
                     try
                     {
 
-                        string str = "select count(uid) from tblUserMaster where email='" + txt_email.Text + "'";
+                        string str = "select count(uid) from tblUserMaster where UserTypeId=2 and email='" + txt_email.Text + "'";
                         SqlCommand cmd = new SqlCommand(str, connection);
                         int countuid = Convert.ToInt32(cmd.ExecuteScalar());
                         if (countuid == 0)
                         {
 
-                            str = "select count(id) from tblVerifyRegistration where email='" + txt_email.Text + "'";
+                            str = "select count(id) from tblVerifyRegistration where UserType=2 and email='" + txt_email.Text + "'";
                             cmd = new SqlCommand(str, connection);
                             int countuser = Convert.ToInt32(cmd.ExecuteScalar());
                             if (countuser == 0)

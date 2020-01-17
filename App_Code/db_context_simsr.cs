@@ -22,7 +22,7 @@ public class db_context_simsr
     data_context datacontext = new data_context();
     public db_context_simsr()
     {
-        strcon = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
+       // strcon = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
     }
 
 

@@ -164,8 +164,12 @@
                             <asp:BoundField DataField="StudId" HeaderText="StudId" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
 
                               <asp:BoundField DataField="productId" HeaderText="productId" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
+
                             <asp:BoundField DataField="CandName" HeaderText="Candidate Name"
                                 SortExpression="CandName" />
+
+                             <asp:BoundField DataField="pro_name" HeaderText="Product Name"
+                                SortExpression="pro_name" />
 
                             <asp:BoundField DataField="CandGender" HeaderText="Gender"
                                 SortExpression="CandGender" />
@@ -350,6 +354,11 @@
 
                             <asp:BoundField DataField="CandName" ItemStyle-HorizontalAlign="Center" HeaderText="Candidate Name"
                                 SortExpression="CandName">
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:BoundField>
+
+                            <asp:BoundField DataField="Pro_name" ItemStyle-HorizontalAlign="Center" HeaderText="Product Name"
+                                SortExpression="Pro_name">
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:BoundField>
 

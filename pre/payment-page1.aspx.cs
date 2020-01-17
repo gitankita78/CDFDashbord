@@ -15,6 +15,9 @@ public partial class pre_payment_page1 : System.Web.UI.Page
     public int price;
     public void Page_Load(object sender, EventArgs e)
     {
+        div_hide_option2.Visible = false;
+        div_custompay.Visible = false;
+        //set_offer_values();
         if (!IsPostBack)
         {
             try
@@ -34,7 +37,8 @@ public partial class pre_payment_page1 : System.Web.UI.Page
                         {
                             dr.Read();
                             flag = true;
-                            Full_with_Discount();
+                            // Full_with_Discount();
+                            set_offer_values();
                             Advance_fix();
                             Balance_payment();
                             //div_custompay.Visible = true;
@@ -42,8 +46,9 @@ public partial class pre_payment_page1 : System.Web.UI.Page
                         }
                         else
                         {
-                            Full_with_Discount();
-                            Advance_fix();
+                            //Full_with_Discount();
+                            set_offer_values();
+                           Advance_fix();
                             Balance_payment_default();
                             //div_custompay.Visible = false;
                             //div_payment.Visible = true;
@@ -96,92 +101,172 @@ public partial class pre_payment_page1 : System.Web.UI.Page
         }
     }
 
-    public void Full_with_Discount()
+    //public void Full_with_Discount()
+    //{
+    //    using (SqlConnection conn = new SqlConnection(connectionString))
+    //    {
+    //        // Full Payment with discount
+    //        string str_full = "select pId as id, (price - 2000) as amount, price from tblProductMaster where pId = 7";
+    //        SqlDataAdapter da1_full = new SqlDataAdapter(str_full, conn);
+    //        DataSet ds1_full = new DataSet();
+    //        da1_full.Fill(ds1_full);
+
+    //        if (ds1_full.Tables[0].Rows.Count > 0)
+    //        {
+    //            gvCustomPay_full.DataSource = ds1_full;
+    //            gvCustomPay_full.DataBind();
+    //        }
+    //        else
+    //        {
+    //            gvCustomPay_full.DataSource = null;
+    //            gvCustomPay_full.DataBind();
+    //        }
+    //    }
+    //}
+
+    //fuction for set the offer values
+    public void set_offer_values()
     {
         using (SqlConnection conn = new SqlConnection(connectionString))
         {
-            // Full Payment with discount
-            string str_full = "select pId as id, (price - 1500) as amount, price from tblProductMaster where pId = 7";
-            SqlDataAdapter da1_full = new SqlDataAdapter(str_full, conn);
-            DataSet ds1_full = new DataSet();
-            da1_full.Fill(ds1_full);
+            SqlCommand cmd = new SqlCommand();
+            
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select pId as id, (price) as amount, price from tblProductMaster where pId = 7";
 
-            if (ds1_full.Tables[0].Rows.Count > 0)
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            
+            while(dr.Read())
             {
-                gvCustomPay_full.DataSource = ds1_full;
-                gvCustomPay_full.DataBind();
+                lblamt_disc.Text = "Rs." + dr["amount"].ToString() + "/-";
+                //lblprice_real.Text= "Rs." + dr["price"].ToString() + "/-";
             }
-            else
-            {
-                gvCustomPay_full.DataSource = null;
-                gvCustomPay_full.DataBind();
-            }
+           
+
         }
-    }
+
+        }
     public void Advance_fix()
     {
+        //using (SqlConnection conn = new SqlConnection(connectionString))
+        //{
+        //    // Advance Fix Payment
+        //    string str_advance_fix = "select pId as id, (price-22000) as amount from tblProductMaster where pId = 7";
+        //    SqlDataAdapter da1_advance_fix = new SqlDataAdapter(str_advance_fix, conn);
+        //    DataSet ds1_advance_fix = new DataSet();
+        //    da1_advance_fix.Fill(ds1_advance_fix);
+
+        //    if (ds1_advance_fix.Tables[0].Rows.Count > 0)
+        //    {
+        //        gvCustomPay_Advance_fix.DataSource = ds1_advance_fix;
+        //        gvCustomPay_Advance_fix.DataBind();
+        //    }
+        //    else
+        //    {
+        //        gvCustomPay_Advance_fix.DataSource = null;
+        //        gvCustomPay_Advance_fix.DataBind();
+        //    }
+        //}
         using (SqlConnection conn = new SqlConnection(connectionString))
         {
-            // Advance Fix Payment
-            string str_advance_fix = "select pId as id, (price-20000) as amount from tblProductMaster where pId = 7";
-            SqlDataAdapter da1_advance_fix = new SqlDataAdapter(str_advance_fix, conn);
-            DataSet ds1_advance_fix = new DataSet();
-            da1_advance_fix.Fill(ds1_advance_fix);
+            SqlCommand cmd = new SqlCommand();
 
-            if (ds1_advance_fix.Tables[0].Rows.Count > 0)
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select pId as id, (price-22000) as amount from tblProductMaster where pId = 7";
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            while (dr.Read())
             {
-                gvCustomPay_Advance_fix.DataSource = ds1_advance_fix;
-                gvCustomPay_Advance_fix.DataBind();
+                lbladv_pay.Text = "Rs." + dr["amount"].ToString();
             }
-            else
-            {
-                gvCustomPay_Advance_fix.DataSource = null;
-                gvCustomPay_Advance_fix.DataBind();
-            }
+
+
         }
+
     }
     public void Balance_payment_default()
     {
+        //using (SqlConnection conn = new SqlConnection(connectionString))
+        //{
+        //    // Balance Payment
+        //    string str_balance = " select pId as id, (price-20000) as amount from tblProductMaster where pId = 7 ";
+        //    SqlDataAdapter da1_balance = new SqlDataAdapter(str_balance, conn);
+        //    DataSet ds1_balance = new DataSet();
+        //    da1_balance.Fill(ds1_balance);
+
+        //    if (ds1_balance.Tables[0].Rows.Count > 0)
+        //    {
+        //        gvCustomPay_Balance.DataSource = ds1_balance;
+        //        gvCustomPay_Balance.DataBind();
+        //    }
+        //    else
+        //    {
+        //        gvCustomPay_Balance.DataSource = null;
+        //        gvCustomPay_Balance.DataBind();
+        //    }
+        //}
         using (SqlConnection conn = new SqlConnection(connectionString))
         {
-            // Balance Payment
-            string str_balance = " select pId as id, (price-15000) as amount from tblProductMaster where pId = 7 ";
-            SqlDataAdapter da1_balance = new SqlDataAdapter(str_balance, conn);
-            DataSet ds1_balance = new DataSet();
-            da1_balance.Fill(ds1_balance);
+            SqlCommand cmd = new SqlCommand();
 
-            if (ds1_balance.Tables[0].Rows.Count > 0)
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select pId as id, (price-20000) as amount from tblProductMaster where pId = 7";
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            while (dr.Read())
             {
-                gvCustomPay_Balance.DataSource = ds1_balance;
-                gvCustomPay_Balance.DataBind();
+                lblbalac_amt.Text = "Rs." + dr["amount"].ToString();
             }
-            else
-            {
-                gvCustomPay_Balance.DataSource = null;
-                gvCustomPay_Balance.DataBind();
-            }
+
+
         }
+
+
     }
     public void Balance_payment()
     {
+        //using (SqlConnection conn = new SqlConnection(connectionString))
+        //{
+        //    // Balance Payment
+        //    string str_balance = " select id, (amount-20000) as amount from tblCustomPayment where uid = '" + Session["uid"].ToString() + "' And status='ACTIVE'";
+        //    SqlDataAdapter da1_balance = new SqlDataAdapter(str_balance, conn);
+        //    DataSet ds1_balance = new DataSet();
+        //    da1_balance.Fill(ds1_balance);
+
+        //    if (ds1_balance.Tables[0].Rows.Count > 0)
+        //    {
+        //        gvCustomPay_Balance.DataSource = ds1_balance;
+        //        gvCustomPay_Balance.DataBind();
+        //    }
+        //    else
+        //    {
+        //        gvCustomPay_Balance.DataSource = null;
+        //        gvCustomPay_Balance.DataBind();
+        //    }
+        //}
+
         using (SqlConnection conn = new SqlConnection(connectionString))
         {
-            // Balance Payment
-            string str_balance = " select id, (amount-15000) as amount from tblCustomPayment where uid = '"+ Session["uid"].ToString()+ "' And status='ACTIVE'";
-            SqlDataAdapter da1_balance = new SqlDataAdapter(str_balance, conn);
-            DataSet ds1_balance = new DataSet();
-            da1_balance.Fill(ds1_balance);
+            //Balance payment
+            SqlCommand cmd = new SqlCommand();
 
-            if (ds1_balance.Tables[0].Rows.Count > 0)
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select id, (amount - 20000) as amount from tblCustomPayment where uid = '" + Session["uid"].ToString() + "' And status = 'ACTIVE'";
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            while (dr.Read())
             {
-                gvCustomPay_Balance.DataSource = ds1_balance;
-                gvCustomPay_Balance.DataBind();
+                lblbalac_amt.Text = "Rs." + dr["amount"].ToString();
             }
-            else
-            {
-                gvCustomPay_Balance.DataSource = null;
-                gvCustomPay_Balance.DataBind();
-            }
+
         }
     }
     private void grid()
@@ -251,5 +336,11 @@ public partial class pre_payment_page1 : System.Web.UI.Page
                 }
             }
         }
+    }
+
+    protected void btn_makepayment_off_Click(object sender, EventArgs e)
+    {
+        //Response.Write("btn_makepayment_off click event");
+       
     }
 }

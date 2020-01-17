@@ -32,7 +32,7 @@ public class dal_simsr
     public dal_simsr()
     {
         //ConnectionStringSettings cn = new ConnectionStringSettings();
-        strcon = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
+       // strcon = ConfigurationManager.ConnectionStrings["career_portalConnectionString_simsr"].ConnectionString.ToString();
         //
         // TODO: Add constructor logic here
         //  

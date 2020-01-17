@@ -2,6 +2,66 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
+
+/* start add css for Discount card */
+  .column_dis{
+      width: 45%;
+      display: block;
+      margin-bottom: 0px;
+  }
+  .card_dis{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 5px;
+      text-align: center;
+      background-color: #f1f1f1;
+      float:left;
+  }
+  
+  .row_dis {
+      /*margin: 0 -5px;*/
+      margin: 40px -2px;
+    padding: 7px;
+  }
+  .row_dis:after {
+     content: "";
+     display: table;
+     clear: both;
+}
+  /* end Dicount card*/
+
+  /* Table css */
+  #tbl_balance {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  font-size:14px;
+}
+
+#tbl_balance td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#tbl_balance tr:nth-child(even){background-color: #f2f2f2;}
+
+#tbl_balance tr:hover {background-color: #ddd;}
+
+#tbl_balance th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align:center;
+  background-color: #337ab7;
+  color: white;
+  font-weight:600;
+ 
+  
+}
+  /*End*/
+
+
+
+
         .rowspace {
             padding: 0 10px 0 10px;
         }
@@ -134,11 +194,46 @@ Please feel free to contact us for any further queries to assigned executive or 
                         </center>
                 </div>
             </div>
+            <hr />
             <form id="form1" runat="server">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <div class="row rowspace">
+                  <%--   <div id="table_balance">
+                           <table id="tbl_balance" align="center">
+                             <tbody>
+                             <tr>
+                             <th>Basic Level</th>
+                             <th>Adnavce Level</th>
+                             </tr>
+                              <tr>
+                              <td> Rs.40000</td> 
+                              <td>RS.42000</td>
+                              </tr>
+                            </tbody> 
+
+                           </table> <hr />
+                         </div>--%>
+                   
+                      
+
                     <div class="" id="div_status" runat="server">
-                        <h2 style="font-weight: 600; margin-bottom: 15px; text-align: center;">Payment Status</h2>
+                        <h2 style="font-weight: 600; margin-bottom: 15px; text-align: center; font-size:24px;">Fees</h2>
+                         <h3 style="font-weight: 600; margin-bottom: 15px; text-align: center; font-size:24px;">Basic Level + Advance Level</h3>
+
+                       <div class="row_dis">
+                                   <div class="column_dis" style=" float: left; margin-right: 6px;">
+                                       <div class="card_dis" style="padding-bottom:8px;margin-left: 410px">
+                                           <h2><b style="font-size:20px; margin:42px">
+                                               <asp:Label ID="lblamt_disc" runat="server" ></asp:Label></b><br></h2>
+
+                                           
+                                            
+                                           
+                                       </div>
+                                   </div>
+                                   
+                               </div>
+
                         <div class="col-sm-8 col-sm-offset-2">
 
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
@@ -150,9 +245,15 @@ Please feel free to contact us for any further queries to assigned executive or 
                                     <asp:BoundField DataField="Product Name" HeaderText="Product Name 111" SortExpression="Product Name">
                                         <HeaderStyle Wrap="False" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
+
+                                  <%--  <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
                                         <HeaderStyle Wrap="False" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
+                                     <asp:TemplateField HeaderText="Amount">
+                                                    <ItemTemplate>
+                                                       Rs.<asp:Label ID="lblamount3" runat="server" Text='<%#Eval("amount") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
 
                                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status">
                                         <HeaderStyle Wrap="False" />
@@ -184,15 +285,44 @@ Please feel free to contact us for any further queries to assigned executive or 
                 <div class="row" id="div_custompay" runat="server">
                     <br />
 
-                    <div class="col-sm-6">
-                        <h2 class="awesome">OPTION 1</h2>
+                    <div class="col-sm-8 col-sm-offset-2">
+                    <%--<div class="col-sm-6">
+                        <h2 class="awesome">OPTION 1</h2>--%>
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Make One Time Payment and get 1500 OFF</h2>
-
-                                <div class="clearfix"></div>
+                                <h2>Make One Time Payment </h2>
+                                 <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
+                                <%--Add discound card--%>
+                            <asp:Panel ID="Panel_full" runat="server">
+                                <div class="row_dis">
+                                   <div class="column_dis" style=" float: left; margin-right: 6px;">
+                                       <div class="card_dis" style="padding-bottom:8px;">
+                                           <h2><b style="font-size:20px; margin:42px">
+                                               <asp:Label ID="lblamt_disc1" runat="server" ></asp:Label></b><br></h2>
+
+                                           
+                                              <%-- <p><b><a style="text-decoration:line-through;"> <asp:Label ID="lblprice_real" runat="server" ></asp:Label></a></b></p>--%>
+                                          
+                                               <%--<p style="visibility:hidden;"><b>40000 &nbsp;<a style="text-decoration:line-through;"> Rs. 40000/-</a></b></p>--%>
+                                           
+                                       </div>
+                                   </div>
+                                    <div>
+                                        <asp:Button ID="btn_makepayment_off" runat="server" class="btn btn-success" style="margin:22px" Text="Click here to payment" OnClick="btn_makepayment_off_Click" />
+                                        <%--<button type="button" class="btn btn-success" style="margin:22px">Click here to payment</button>--%>
+
+                                    </div>
+                               </div>
+                                </asp:Panel>
+
+
+<%--    <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
+                                                    <HeaderStyle Wrap="False" />
+                                                </asp:BoundField>--%>
+
+                               
+                            <%--<div class="x_content">
                                 <asp:Panel ID="Panel_full" runat="server">
                                     <div align="center">
                                         <asp:GridView ID="gvCustomPay_full" runat="server" AutoGenerateColumns="False" CellPadding="4"
@@ -207,16 +337,18 @@ Please feel free to contact us for any further queries to assigned executive or 
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
-                                                    <HeaderStyle Wrap="False" />
-                                                </asp:BoundField>
-
+                                       
+                                                <asp:TemplateField HeaderText="Amount">
+                                                    <ItemTemplate>
+                                                       Rs.<asp:Label ID="Label22" runat="server" Text='<%#Eval("amount") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
 
                                                 <asp:TemplateField HeaderText="Payment">
                                                     <ItemTemplate>
                                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                             <ContentTemplate>
-                                                                <asp:Button ID="btn_pay" CssClass="btn btn-success btn-sm"
+                                                               <asp:Button ID="btn_pay" CssClass="btn btn-success btn-sm"
                                                                     runat="server" Text="click here to payment" CommandArgument='<%# Eval("Amount") + "," +  Eval("id")%>' CommandName="pay" />
                                                             </ContentTemplate>
                                                         </asp:UpdatePanel>
@@ -238,10 +370,10 @@ Please feel free to contact us for any further queries to assigned executive or 
                                         </asp:GridView>
                                     </div>
                                 </asp:Panel>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
-
+                    <div id="div_hide_option2" runat="server">
                     <div class="col-sm-6">
                         <h2 class="awesome">OPTION 2</h2>
                         <div class="x_panel">
@@ -249,7 +381,28 @@ Please feel free to contact us for any further queries to assigned executive or 
                                 <h2>Advance Payment to Confirm Participation</h2>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
+                                <asp:Panel ID="Panel_Advance" runat="server">
+                                <div class="row_dis">
+                                   <div class="column_dis" style=" float: left; margin-right: 6px;">
+                                       <div class="card_dis" style="padding-bottom:8px">
+                                           <h2><b style="font-size:16px; margin:auto">
+                                               <asp:Label ID="Label2" runat="server" Text="CDF Training Advance Payment"></asp:Label></b><br></h2>
+
+                                           
+                                               <p><b> <a><asp:Label ID="lbladv_pay" runat="server" ></asp:Label></a></b></p>
+                                          
+                                               <%--<p style="visibility:hidden;"><b>40000 &nbsp;<a style="text-decoration:line-through;"> Rs. 40000/-</a></b></p>--%>
+                                           
+                                       </div>
+                                   </div>
+                                    <div>
+                                        <asp:Button ID="btn_payment_advance" runat="server" class="btn btn-success" style="margin:22px" Text="Click here to payment" />
+                                        <%--<button type="button" class="btn btn-success" style="margin:22px">Click here to payment</button>--%>
+
+                                    </div>
+                               </div>
+                                </asp:Panel>
+                            <%--<div class="x_content">
                                 <div class="form-horizontal" role="form" runat="server">
 
                                     <div class="x_content">
@@ -267,9 +420,12 @@ Please feel free to contact us for any further queries to assigned executive or 
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
 
-                                                        <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
-                                                            <HeaderStyle Wrap="False" />
-                                                        </asp:BoundField>
+                                                      
+                                                         <asp:TemplateField HeaderText="Amount">
+                                                    <ItemTemplate>
+                                                       Rs.<asp:Label ID="lblamount1" runat="server" Text='<%#Eval("amount") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
 
 
 
@@ -301,7 +457,7 @@ Please feel free to contact us for any further queries to assigned executive or 
                                         </asp:Panel>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--%>
 
                             <hr />
                             <div id="div_balance_payment" runat="server">
@@ -310,9 +466,33 @@ Please feel free to contact us for any further queries to assigned executive or 
 
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="x_content">
+
+                                 <%--Payment Details--%>
+                                <asp:Panel ID="Panel_Balance" runat="server">
+                                <div class="row_dis">
+                                   <div class="column_dis" style=" float: left; margin-right: 6px;">
+                                       <div class="card_dis" style="padding-bottom:8px; width:182px;">
+                                           <h2><b style="font-size:16px; margin:auto">
+                                               <asp:Label ID="Label1" runat="server" Text="Balance Payment"></asp:Label></b><br></h2>
+
+                                           
+                                               <p><b> <a><asp:Label ID="lblbalac_amt" runat="server"></asp:Label></a></b></p>
+                                          
+                                               
+                                           
+                                       </div>
+                                   </div>
+                                    <div>
+                                        <asp:Button ID="btn_balance_payment" runat="server" class="btn btn-success" style="margin:22px" Text="Click here to payment" />
+                                        <%--<button type="button" class="btn btn-success" style="margin:22px">Click here to payment</button>--%>
+
+                                    </div>
+                               </div>
+                                </asp:Panel>
+
+                                <%--<div class="x_content">
                                     <div class="form-horizontal" role="form" runat="server">
-                                        <%--Payment Details--%>
+                                       
                                         <div class="x_content">
                                             <asp:Panel ID="Panel_Balance" runat="server" Enabled="false">
                                                 <div align="center">
@@ -328,9 +508,13 @@ Please feel free to contact us for any further queries to assigned executive or 
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
-                                                            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount">
-                                                                <HeaderStyle Wrap="False" />
-                                                            </asp:BoundField>
+                                                       
+
+                                                     <asp:TemplateField HeaderText="Amount">
+                                                    <ItemTemplate>
+                                                       Rs.<asp:Label ID="lblamount2" runat="server" Text='<%#Eval("amount") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
 
 
 
@@ -362,10 +546,11 @@ Please feel free to contact us for any further queries to assigned executive or 
                                             </asp:Panel>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
             </form>
         </div>

@@ -745,9 +745,11 @@ input[type=text], input[type=password] {
         function CloseUpdateCDFPopup() {
             $("[id*=modelUpdate]").hide();
         }
-
+        
 
     </script>
+
+     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <form id="form1" runat="server">
@@ -856,14 +858,16 @@ input[type=text], input[type=password] {
   </div>
 
             <%-- POP UP for  New Update CDF Portal--%>
-        <div id="modelUpdate" class="popover" style="margin-top: 60px; margin-left: 270px; max-width: 925px;">
+        <div id="modelUpdate" class="popover" style="margin-top: 60px; margin-left: 457px; max-width: 1000px;">
             <div class="popover-title">
                 <asp:Label runat="server" Text="New Policy"></asp:Label>
                 <button id="Close" type="button" class="close" onclick="CloseUpdateCDFPopup()" title="Close">&times;</button>
+                
             </div>
             <div class="popover-content">
                 <%-- <asp:Image ImageUrl="https://dheya.com/cdf-dashboard/doc/cdf-doc/Magazine-web-page.jpg" runat="server" Height="700" Width="500" />--%>
-                <iframe width="900" height="600" src="https://dheya.com/cdf-dashboard/doc/Policy_Document/NewFeature.pdf"></iframe>
+                <iframe width="950" height="650" src="https://dheya.com/cdf-dashboard/doc/Policy_Document/NewFeature.pdf" ></iframe>
+                
                   <%-- <iframe width="900" height="600" src="doc/Policy_Document/NewFeature.pdf"></iframe>--%>
                 <%-- src="doc/cdf-doc/Magazine_-_Quarter_1.pdf" --%>
             </div>
@@ -877,28 +881,28 @@ input[type=text], input[type=password] {
 
 
         <%-- POP UP for  New Policy--%>
-        <div id="pop_Policy" class="popover" style="margin-top: 60px; margin-left: 270px; max-width: 925px;">
+        <div id="pop_Policy" class="popover" style="margin-top: 60px; margin-left: 457px; max-width: 1000px;">
             <div class="popover-title">
                 <asp:Label runat="server" Text="New Policy"></asp:Label>
                 <button id="btn_Close" type="button" class="close" onclick="ClosePolicyPopup()" title="Close">&times;</button>
             </div>
             <div class="popover-content">
                 <%-- <asp:Image ImageUrl="https://dheya.com/cdf-dashboard/doc/cdf-doc/Magazine-web-page.jpg" runat="server" Height="700" Width="500" />--%>
-                <iframe width="900" height="600" src="https://dheya.com/cdf-dashboard/doc/Policy_Document/new_policy.pdf"></iframe>
+                <iframe width="950" height="660" src="https://dheya.com/cdf-dashboard/doc/Policy_Document/new_policy.pdf"></iframe>
                 <%-- src="doc/cdf-doc/Magazine_-_Quarter_1.pdf" --%>
             </div>
         </div>
         <%--  end POP UP for  New Policy --%>
 
         <%-- POP UP for  Magazine-thumbnail--%>
-        <div id="pop_Magazine" class="popover" style="margin-top: 60px; margin-left: 270px; max-width: 925px;">
+        <div id="pop_Magazine" class="popover" style="margin-top: 60px; margin-left: 457px; max-width: 1000px;">
             <div class="popover-title">
                 <asp:Label runat="server" Text="Dheya Magazine:Quarter 1"></asp:Label>
                 <button id="btnClose" type="button" class="close" onclick="ClosePopup()" title="Close">&times;</button>
             </div>
             <div class="popover-content">
                 <%-- <asp:Image ImageUrl="https://dheya.com/cdf-dashboard/doc/cdf-doc/Magazine-web-page.jpg" runat="server" Height="700" Width="500" />--%>
-                <iframe width="900" height="600" src="https://dheya.com/cdf-dashboard/doc/cdf-doc/Magazine - Quarter 1.pdf"></iframe>
+                <iframe width="950" height="650" src="https://dheya.com/cdf-dashboard/doc/cdf-doc/Magazine - Quarter 1.pdf"></iframe>
                 <%-- src="doc/cdf-doc/Magazine_-_Quarter_1.pdf" --%>
             </div>
         </div>

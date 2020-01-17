@@ -60,7 +60,7 @@ public partial class CDF_CDFRegistration : System.Web.UI.Page
                 int count = 0;
                 try
                 {
-                    string strcmd1 = "SELECT count(uid) FROM tblUserMaster where dheyaEmail = '" + txt_email.Text.Trim() + "'";
+                    string strcmd1 = "SELECT count(uid) FROM tblUserMaster where UserTypeId=2 and dheyaEmail = '" + txt_email.Text.Trim() + "'";
                     SqlCommand cmd = new SqlCommand(strcmd1, connection);
                     count = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                 }
@@ -87,7 +87,7 @@ public partial class CDF_CDFRegistration : System.Web.UI.Page
                         command.CommandText = strcmd;
                         int i = command.ExecuteNonQuery();
 
-                        strcmd = "select uId from tblUserMaster where dheyaEmail='" + txt_email.Text.Trim().ToString() + "'";
+                        strcmd = "select uId from tblUserMaster where UserTypeId=2 and dheyaEmail='" + txt_email.Text.Trim().ToString() + "'";
                         command.CommandText = strcmd;
                         int uid = Convert.ToInt32(command.ExecuteScalar().ToString());
 
